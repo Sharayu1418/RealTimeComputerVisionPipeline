@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# Environment secrets
+.env
+*.pem
+*.key
+
+# Logs
+*.log
+logs/
+cam*.log
+
+# Docker / local runtime
+.docker/
+docker-data/
+tmp/
+
+# Large media files
+videos/*.mp4
+videos/*.avi
+videos/*.mov
+videos/*.mkv
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Generated test outputs
+tracks_msg.txt
+detections_msg.txt
+frames_msg.txt

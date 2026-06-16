@@ -1,0 +1,47 @@
+# ============================================================================
+# Triton model configuration for YOLOv8n (ONNX).
+#
+# CURRENT LOCAL FIX:
+# Your exported ONNX model has fixed batch size:
+#   images: [1, 3, 640, 640]
+# So Triton dynamic batching must be OFF for this local model.
+#
+# Later GPU/Phase 2 upgrade:
+# Re-export YOLO with dynamic batch support so input becomes:
+#   images: [-1, 3, 640, 640]
+# Then max_batch_size can be > 0 and dynamic_batching can be enabled again.
+# ============================================================================
+
+name: "yolov8n"
+platform: "onnxruntime_onnx"
+
+# IMPORTANT:
+# 0 means no Triton batching.
+# Required because current ONNX model has fixed batch dimension [1,3,640,640].
+max_batch_size: 0
+
+input [
+  {
+    name: "images"
+    data_type: TYPE_FP32
+
+    # Since max_batch_size is 0, include the full ONNX shape.
+    dims: [ 1, 3, 640, 640 ]
+  }
+]
+
+output [
+  {
+    name: "output0"
+    data_type: TYPE_FP32
+
+    # Since max_batch_size is 0, include the full ONNX output shape.
+    dims: [ 1, 84, 8400 ]
+  }
+]
+
+# Dynamic batching is disabled for this fixed-batch ONNX model.
+# dynamic_batching {
+#   preferred_batch_size: [ 4, 8 ]
+#   max_queue_delay_microseconds: 5000
+# }

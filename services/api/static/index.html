@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- Minimal live view: one canvas per camera, boxes + track IDs drawn on top.
+     Deliberately dependency-free so there is nothing to debug but the data. -->
+<html>
+<head>
+<meta charset="utf-8">
+<title>pipeline live view</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #111; color: #ddd; margin: 20px; }
+  h1 { font-size: 18px; font-weight: 500; }
+  #cams { display: flex; flex-wrap: wrap; gap: 16px; }
+  .cam { background: #1a1a1a; padding: 8px; border-radius: 8px; }
+  .cam h2 { font-size: 13px; margin: 0 0 6px; color: #9ad; font-weight: 500; }
+  canvas { display: block; border-radius: 4px; }
+  .lat { font-size: 12px; color: #888; margin-top: 4px; }
+</style>
+</head>
+<body>
+<h1>realtime vision pipeline — live tracks</h1>
+<div id="cams"></div>
+<script>
+const cams = document.getElementById('cams');
+const views = {};   // camera_id -> {canvas, ctx, img, latEl}
+
+// stable color per track id, so "car 14" keeps its color frame to frame
+function colorFor(id) { return `hsl(${(id * 47) % 360} 80% 60%)`; }
+
+function ensureView(camId) {
+  if (views[camId]) return views[camId];
+  const div = document.createElement('div'); div.className = 'cam';
+  const h2 = document.createElement('h2'); h2.textContent = camId;
+  const canvas = document.createElement('canvas');
+  const lat = document.createElement('div'); lat.className = 'lat';
+  div.append(h2, canvas, lat); cams.append(div);
+  views[camId] = { canvas, ctx: canvas.getContext('2d'), img: new Image(), latEl: lat };
+  return views[camId];
+}
+
+const ws = new WebSocket(`ws://${location.host}/ws`);
+ws.onmessage = (ev) => {
+  const all = JSON.parse(ev.data);
+  for (const [camId, msg] of Object.entries(all)) {
+    const v = ensureView(camId);
+    v.img.onload = () => {
+      v.canvas.width = v.img.width; v.canvas.height = v.img.height;
+      v.ctx.drawImage(v.img, 0, 0);
+      // draw each tracked object: box + "class #id"
+      for (const o of msg.objects) {
+        v.ctx.strokeStyle = colorFor(o.track_id);
+        v.ctx.lineWidth = 2;
+        v.ctx.strokeRect(o.x1, o.y1, o.x2 - o.x1, o.y2 - o.y1);
+        v.ctx.fillStyle = colorFor(o.track_id);
+        v.ctx.font = '12px system-ui';
+        v.ctx.fillText(`${o.cls_name} #${o.track_id}`, o.x1 + 2, o.y1 - 4);
+      }
+      // freshest end-to-end latency, measured in the browser itself
+      v.latEl.textContent = `e2e latency: ${(Date.now() - msg.captured_ts).toFixed(0)} ms`;
+    };
+    v.img.src = 'data:image/jpeg;base64,' + msg.jpeg_b64;
+  }
+};
+</script>
+</body>
+</html>

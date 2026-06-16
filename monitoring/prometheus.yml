@@ -1,0 +1,14 @@
+# Prometheus pulls ("scrapes") /metrics from each service every 5s.
+# Each Python service starts a tiny metrics HTTP server on port 9100
+# (see common/metrics.py) — that is what gets scraped here.
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: pipeline
+    static_configs:
+      - targets:
+          - ingest:9100
+          - detector:9100
+          - tracker:9100
+          - api:9100

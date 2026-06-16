@@ -1,0 +1,5 @@
+numpy<2
+scipy==1.13.1
+filterpy==1.4.5
+confluent-kafka==2.5.0
+prometheus-client==0.20.0
