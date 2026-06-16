@@ -39,7 +39,7 @@ make chaos-detector   # kills detector mid-run; it restarts, rejoins its
                       # consumer group, and resumes from its Kafka offset
 ```
 
-## Measured results (fill these in — they are the resume bullets)
+## Measured results 
 
 | Metric | Value | Conditions |
 |---|---|---|
