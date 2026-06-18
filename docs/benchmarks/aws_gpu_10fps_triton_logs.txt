@@ -1,0 +1,72 @@
+vision-triton  | 
+vision-triton  | =============================
+vision-triton  | == Triton Inference Server ==
+vision-triton  | =============================
+vision-triton  | 
+vision-triton  | NVIDIA Release 24.08 (build 107631419)
+vision-triton  | Triton Server Version 2.49.0
+vision-triton  | 
+vision-triton  | Copyright (c) 2018-2024, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+vision-triton  | 
+vision-triton  | Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+vision-triton  | 
+vision-triton  | This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+vision-triton  | By pulling and using the container, you accept the terms and conditions of this license:
+vision-triton  | https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+vision-triton  | 
+vision-triton  | I0618 17:20:39.487890 1 pinned_memory_manager.cc:277] "Pinned memory pool is created at '0x72de20000000' with size 268435456"
+vision-triton  | I0618 17:20:39.490685 1 cuda_memory_manager.cc:107] "CUDA memory pool is created on device 0 with size 67108864"
+vision-triton  | I0618 17:20:39.499267 1 model_lifecycle.cc:472] "loading: yolov8n:1"
+vision-triton  | I0618 17:20:39.526571 1 onnxruntime.cc:2875] "TRITONBACKEND_Initialize: onnxruntime"
+vision-triton  | I0618 17:20:39.526611 1 onnxruntime.cc:2885] "Triton TRITONBACKEND API version: 1.19"
+vision-triton  | I0618 17:20:39.526619 1 onnxruntime.cc:2891] "'onnxruntime' TRITONBACKEND API version: 1.19"
+vision-triton  | I0618 17:20:39.526627 1 onnxruntime.cc:2921] "backend configuration:\n{\"cmdline\":{\"auto-complete-config\":\"true\",\"backend-directory\":\"/opt/tritonserver/backends\",\"min-compute-capability\":\"6.000000\",\"default-max-batch-size\":\"4\"}}"
+vision-triton  | I0618 17:20:39.559173 1 onnxruntime.cc:2986] "TRITONBACKEND_ModelInitialize: yolov8n (version 1)"
+vision-triton  | I0618 17:20:39.561633 1 onnxruntime.cc:984] "skipping model configuration auto-complete for 'yolov8n': inputs and outputs already specified"
+vision-triton  | I0618 17:20:39.562717 1 onnxruntime.cc:3051] "TRITONBACKEND_ModelInstanceInitialize: yolov8n_0 (GPU device 0)"
+vision-triton  | I0618 17:20:40.436902 1 model_lifecycle.cc:839] "successfully loaded 'yolov8n'"
+vision-triton  | I0618 17:20:40.436985 1 server.cc:604] 
+vision-triton  | +------------------+------+
+vision-triton  | | Repository Agent | Path |
+vision-triton  | +------------------+------+
+vision-triton  | +------------------+------+
+vision-triton  | 
+vision-triton  | I0618 17:20:40.437018 1 server.cc:631] 
+vision-triton  | +-------------+-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+vision-triton  | | Backend     | Path                                                            | Config                                                                                                                                                        |
+vision-triton  | +-------------+-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+vision-triton  | | onnxruntime | /opt/tritonserver/backends/onnxruntime/libtriton_onnxruntime.so | {"cmdline":{"auto-complete-config":"true","backend-directory":"/opt/tritonserver/backends","min-compute-capability":"6.000000","default-max-batch-size":"4"}} |
+vision-triton  | +-------------+-----------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+vision-triton  | 
+vision-triton  | I0618 17:20:40.437064 1 server.cc:674] 
+vision-triton  | +---------+---------+--------+
+vision-triton  | | Model   | Version | Status |
+vision-triton  | +---------+---------+--------+
+vision-triton  | | yolov8n | 1       | READY  |
+vision-triton  | +---------+---------+--------+
+vision-triton  | 
+vision-triton  | I0618 17:20:40.484945 1 metrics.cc:877] "Collecting metrics for GPU 0: Tesla T4"
+vision-triton  | I0618 17:20:40.499267 1 metrics.cc:770] "Collecting CPU metrics"
+vision-triton  | I0618 17:20:40.500121 1 tritonserver.cc:2598] 
+vision-triton  | +----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+vision-triton  | | Option                           | Value                                                                                                                                                                                                           |
+vision-triton  | +----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+vision-triton  | | server_id                        | triton                                                                                                                                                                                                          |
+vision-triton  | | server_version                   | 2.49.0                                                                                                                                                                                                          |
+vision-triton  | | server_extensions                | classification sequence model_repository model_repository(unload_dependents) schedule_policy model_configuration system_shared_memory cuda_shared_memory binary_tensor_data parameters statistics trace logging |
+vision-triton  | | model_repository_path[0]         | /models                                                                                                                                                                                                         |
+vision-triton  | | model_control_mode               | MODE_NONE                                                                                                                                                                                                       |
+vision-triton  | | strict_model_config              | 0                                                                                                                                                                                                               |
+vision-triton  | | model_config_name                |                                                                                                                                                                                                                 |
+vision-triton  | | rate_limit                       | OFF                                                                                                                                                                                                             |
+vision-triton  | | pinned_memory_pool_byte_size     | 268435456                                                                                                                                                                                                       |
+vision-triton  | | cuda_memory_pool_byte_size{0}    | 67108864                                                                                                                                                                                                        |
+vision-triton  | | min_supported_compute_capability | 6.0                                                                                                                                                                                                             |
+vision-triton  | | strict_readiness                 | 1                                                                                                                                                                                                               |
+vision-triton  | | exit_timeout                     | 30                                                                                                                                                                                                              |
+vision-triton  | | cache_enabled                    | 0                                                                                                                                                                                                               |
+vision-triton  | +----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+vision-triton  | 
+vision-triton  | I0618 17:20:40.506822 1 grpc_server.cc:2463] "Started GRPCInferenceService at 0.0.0.0:8001"
+vision-triton  | I0618 17:20:40.507155 1 http_server.cc:4694] "Started HTTPService at 0.0.0.0:8000"
+vision-triton  | I0618 17:20:40.548912 1 http_server.cc:362] "Started Metrics Service at 0.0.0.0:8002"

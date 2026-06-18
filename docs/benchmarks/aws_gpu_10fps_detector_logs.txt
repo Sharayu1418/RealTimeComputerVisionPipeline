@@ -1,0 +1,45 @@
+vision-detector  | [detector] Using TRITON backend url=triton:8001, model=yolov8n
+vision-detector  | Traceback (most recent call last):
+vision-detector  |   File "/app/main.py", line 215, in <module>
+vision-detector  |     backend = TritonYOLOBackend()
+vision-detector  |               ^^^^^^^^^^^^^^^^^^^
+vision-detector  |   File "/app/main.py", line 99, in __init__
+vision-detector  |     if not self.client.is_server_live():
+vision-detector  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+vision-detector  |   File "/usr/local/lib/python3.11/site-packages/tritonclient/grpc/_client.py", line 305, in is_server_live
+vision-detector  |     raise_error_grpc(rpc_error)
+vision-detector  |   File "/usr/local/lib/python3.11/site-packages/tritonclient/grpc/_utils.py", line 77, in raise_error_grpc
+vision-detector  |     raise get_error_grpc(rpc_error) from None
+vision-detector  | tritonclient.utils.InferenceServerException: [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:172.18.0.10:8001: Failed to connect to remote host: Connection refused
+vision-detector  | [detector] Using TRITON backend url=triton:8001, model=yolov8n
+vision-detector  | Traceback (most recent call last):
+vision-detector  |   File "/app/main.py", line 215, in <module>
+vision-detector  |     backend = TritonYOLOBackend()
+vision-detector  |               ^^^^^^^^^^^^^^^^^^^
+vision-detector  |   File "/app/main.py", line 99, in __init__
+vision-detector  |     if not self.client.is_server_live():
+vision-detector  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+vision-detector  |   File "/usr/local/lib/python3.11/site-packages/tritonclient/grpc/_client.py", line 305, in is_server_live
+vision-detector  |     raise_error_grpc(rpc_error)
+vision-detector  |   File "/usr/local/lib/python3.11/site-packages/tritonclient/grpc/_utils.py", line 77, in raise_error_grpc
+vision-detector  |     raise get_error_grpc(rpc_error) from None
+vision-detector  | tritonclient.utils.InferenceServerException: [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:172.18.0.10:8001: Failed to connect to remote host: Connection refused
+vision-detector  | [detector] Using TRITON backend url=triton:8001, model=yolov8n
+vision-detector  | Traceback (most recent call last):
+vision-detector  |   File "/app/main.py", line 215, in <module>
+vision-detector  |     backend = TritonYOLOBackend()
+vision-detector  |               ^^^^^^^^^^^^^^^^^^^
+vision-detector  |   File "/app/main.py", line 99, in __init__
+vision-detector  |     if not self.client.is_server_live():
+vision-detector  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+vision-detector  |   File "/usr/local/lib/python3.11/site-packages/tritonclient/grpc/_client.py", line 305, in is_server_live
+vision-detector  |     raise_error_grpc(rpc_error)
+vision-detector  |   File "/usr/local/lib/python3.11/site-packages/tritonclient/grpc/_utils.py", line 77, in raise_error_grpc
+vision-detector  |     raise get_error_grpc(rpc_error) from None
+vision-detector  | tritonclient.utils.InferenceServerException: [StatusCode.UNAVAILABLE] failed to connect to all addresses; last error: UNKNOWN: ipv4:172.18.0.10:8001: Failed to connect to remote host: Connection refused
+vision-detector  | [detector] Using TRITON backend url=triton:8001, model=yolov8n
+vision-detector  | %3|1781803240.566|FAIL|rdkafka#producer-1| [thrd:kafka:9092/bootstrap]: kafka:9092/bootstrap: Connect to ipv4#172.18.0.3:9092 failed: Connection refused (after 0ms in state CONNECT)
+vision-detector  | [detector] Started with backend=triton
+vision-detector  | %3|1781803240.569|FAIL|rdkafka#consumer-2| [thrd:kafka:9092/bootstrap]: kafka:9092/bootstrap: Connect to ipv4#172.18.0.3:9092 failed: Connection refused (after 0ms in state CONNECT)
+vision-detector  | [detector] Using TRITON backend url=triton:8001, model=yolov8n
+vision-detector  | [detector] Started with backend=triton
