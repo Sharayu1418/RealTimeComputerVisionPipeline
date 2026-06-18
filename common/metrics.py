@@ -13,7 +13,7 @@ screenshot before any tuning work starts.
 from prometheus_client import Counter, Histogram, start_http_server
 
 # Buckets tuned for a CPU pipeline: 5ms .. 5s. Adjust when you go GPU.
-LATENCY_BUCKETS = (5, 10, 25, 50, 100, 200, 400, 800, 1500, 3000, 5000)
+LATENCY_BUCKETS =(10, 50, 100, 250, 500, 1000, 1500, 3000, 5000, 10000, 20000, 30000, 45000, 60000, 120000)
 
 # end-to-end latency UP TO this stage (now - captured_ts), labeled by stage+camera
 STAGE_E2E_MS = Histogram(
