@@ -38,3 +38,8 @@ Thumbs.db
 tracks_msg.txt
 detections_msg.txt
 frames_msg.txt
+
+data/accuracy_eval/
+data/accuracy_eval_yolo/
+data/accuracy_eval_coco/
+runs/
